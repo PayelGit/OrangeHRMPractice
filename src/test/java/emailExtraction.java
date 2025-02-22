@@ -32,12 +32,12 @@ public class emailExtraction {
             }
         }
 
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});",driver.findElement(By.id("fileTabLink")));
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",driver.findElement(By.id("fileTabLink")));
         driver.findElement(By.id("fileTabLink")).click();
-        String filePath = "C:\\Users\\payel\\Downloads\\STS_Job Poster Emails_Jan-2025.pdf";
+        String filePath = "C:\\Users\\payel\\Downloads\\3-6 Years - 22-Feb.pdf";
         WebElement uploadElement = driver.findElement(By.xpath("//input[@type='file']"));
 
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});",uploadElement);
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",uploadElement);
         uploadElement.sendKeys(filePath);
         driver.findElement(By.xpath("//input[@title='Find Emails in Text']")).click();
         driver.findElement(By.cssSelector(".fa.fa-clipboard")).click();
@@ -47,6 +47,7 @@ public class emailExtraction {
 
         // Print the extracted emails in the console
         System.out.println("Extracted Emails:\n" + extractedEmails);
+        System.out.println("done");
 //        driver.quit();
 
 //        Robot robot = new Robot();
