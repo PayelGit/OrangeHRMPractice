@@ -4,6 +4,8 @@ import io.cucumber.java.en.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import pageObjects.DashboardPageObjects;
+import pageObjects.LandingPageObjects;
 import utils.TestContextSetup;
 
 import java.time.Duration;
@@ -11,6 +13,8 @@ import java.time.Duration;
 public class LandingPageStepDefinitions {
 
     TestContextSetup test;
+    LandingPageObjects landingPageObjects;
+    DashboardPageObjects dashboardPageObjects;
 
     public LandingPageStepDefinitions(TestContextSetup test)
     {
@@ -18,6 +22,10 @@ public class LandingPageStepDefinitions {
         test.driver = new ChromeDriver();
         test.driver.manage().window().maximize();
         test.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        landingPageObjects = new LandingPageObjects(test.driver);
+        dashboardPageObjects = new DashboardPageObjects(test.driver);
+
+
     }
 
     @Given("User is in login page")
@@ -29,19 +37,18 @@ public class LandingPageStepDefinitions {
     }
     @When("User logins to the application")
     public void user_logins_to_the_application() {
-        test.driver.findElement(By.id("textfield-login-user-username")).sendKeys("9thstage@gonetor.com");
-        test.driver.findElement(By.id("textfield-login-view-password")).sendKeys("Admin@123");
-        test.driver.findElement(By.id("btn_login_user_signin")).click();
+        landingPageObjects.loginToTheApplication("9thstage@gonetor.com","Admin@123");
+
     }
     @When("User selects company")
     public void user_selects_company() {
-        test.driver.findElement(By.id("buttons-select-user-organization-0")).click();
-        test.driver.findElement(By.id("btn-get-started-organization")).click();
-
+        landingPageObjects.selectOrganization();
     }
+
+
     @Then("User redirects into dashboard page")
     public void user_redirects_into_dashboard_page() {
-        Assert.assertTrue(test.driver.findElement(By.id("dashboard-header-text-name")).isDisplayed());
+        Assert.assertTrue(dashboardPageObjects.dashBoardLogo().isDisplayed());
         System.out.println("dashboard page is displayed");
 
     }

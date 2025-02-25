@@ -34,7 +34,7 @@ public class emailExtraction {
 
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",driver.findElement(By.id("fileTabLink")));
         driver.findElement(By.id("fileTabLink")).click();
-        String filePath = "C:\\Users\\payel\\Downloads\\All-in-One QA Jobs - 24-Feb.pdf";
+        String filePath = "C:\\Users\\payel\\Downloads\\3-6 Years - 25-Feb.pdf";
         WebElement uploadElement = driver.findElement(By.xpath("//input[@type='file']"));
 
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",uploadElement);

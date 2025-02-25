@@ -24,6 +24,8 @@ public class naukriAutomation
         driver.findElement(By.xpath("//img[@alt='naukri user profile img']")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated((By.xpath("//a[contains(text(),'View & Update Profile')]"))));
         driver.findElement(By.xpath("//a[contains(text(),'View & Update Profile')]")).click();
+        String modTime = driver.findElement(By.cssSelector(".mod-date>span")).getText();
+        System.out.println(modTime);
         driver.findElement(By.cssSelector("#root > div > div > span > div > div > div > div > div > div.dashboard-component > div.dashboard > div > div > div > div.txt-wrapper.col > div:nth-child(1) > div > div.hdn > em")).click();
         Assert.assertTrue(driver.findElement(By.xpath("//div[contains(text(),'Basic details')]")).isDisplayed());
 
@@ -38,7 +40,7 @@ public class naukriAutomation
         saveBtn.click();
         Thread.sleep(2000);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".mod-date>span")));
-        String modTime = driver.findElement(By.cssSelector(".mod-date>span")).getText();
+        modTime = driver.findElement(By.cssSelector(".mod-date>span")).getText();
         System.out.println(modTime);
         if(modTime.equalsIgnoreCase("Profile last updated - Today"))
         {
