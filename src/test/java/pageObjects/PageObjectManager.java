@@ -11,6 +11,7 @@ public class PageObjectManager
     LandingPageObjects landingPageObjects;
     DashboardPageObjects dashboardPageObjects;
     TagsPageObjects tagsPageObjects;
+    ProjectPageObjects projectPageObjects;
 
     public PageObjectManager(WebDriver driver)
     {
@@ -33,5 +34,11 @@ public class PageObjectManager
     {
         tagsPageObjects = new TagsPageObjects(driver);
         return tagsPageObjects;
+    }
+
+    public ProjectPageObjects getProjectPage()
+    {
+        projectPageObjects = new ProjectPageObjects(driver);
+        return projectPageObjects;
     }
 }
